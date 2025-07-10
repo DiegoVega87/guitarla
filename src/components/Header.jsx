@@ -1,7 +1,13 @@
+ 
+ 
  function Header(){
 
+    const total = 100
     return (
-        <h1>Desde Header y actualizar</h1>
+        <> {/* No crea divs innecesarios */}
+            <p>Total a pagar = {total}</p> 
+            <p>Despues</p>
+        </>
     )
 }
 
