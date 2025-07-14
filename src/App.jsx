@@ -7,12 +7,23 @@ function App() {
 
     // State
     const [data, setData] = useState([])
+    const [cart, setCart] = useState([])
     // Effect
     useEffect(()=>{
         setData(db)
     }, [])
 
-    
+    function addToCart(item){
+        const itemExist = cart.findIndex(guitar => guitar.id === item.id)
+        if(itemExist < 0){
+            item.quantity = 1
+            setCart([...cart, item])
+        }else{
+            const updatedCart = [...cart]
+            updatedCart[itemExist].quantity++
+            setCart(updatedCart)
+        }
+    }
   return (
     <>
 
@@ -26,6 +37,7 @@ function App() {
                 <Guitar
                     key={guitar.id}
                     guitar = {guitar} // This is the prop
+                    addToCart={addToCart}
                 />
 
                 )
