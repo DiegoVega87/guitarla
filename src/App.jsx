@@ -5,13 +5,18 @@ import {db} from "./data/db"
 
 function App() {
 
+    const initialCart = () =>{
+        const localStorageCart = localStorage.getItem('cart')
+        return localStorageCart ? JSON.parse(localStorageCart) : []
+    }
     // State
     const [data, setData] = useState([])
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useState(initialCart)
     // Effect
     useEffect(()=>{
         setData(db)
-    }, [])
+        localStorage.setItem('cart' , JSON.stringify(cart))
+    }, [cart])
 
     const MAX_ITEMS = 5
 
@@ -71,6 +76,10 @@ function App() {
             }
         }
 
+    }
+
+    function saveLocalStorage(){
+        localStorage.setItem('cart', JSON.stringify(cart))
     }
 
   return (
