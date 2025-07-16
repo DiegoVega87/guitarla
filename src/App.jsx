@@ -12,7 +12,7 @@ function App() {
     
     // State
     const [data, setData] = useState([])
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useState(initialCart)
     // Effect
     useEffect(()=>{
         setData(db)
