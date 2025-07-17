@@ -28,8 +28,10 @@ function App() {
             setCart([...cart, item])
         }else{
             const updatedCart = [...cart]
-            updatedCart[itemExist].quantity < MAX_ITEMS ? updatedCart[itemExist].quantity++ : 
-            setCart(updatedCart)
+            if(updatedCart[itemExist].quantity < MAX_ITEMS){
+                updatedCart[itemExist].quantity++
+                setCart(updatedCart)
+            }
         }
     }
 
